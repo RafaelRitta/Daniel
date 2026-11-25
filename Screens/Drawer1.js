@@ -1,46 +1,67 @@
 import React from 'react';
-
 import {
   View,
   Text,
-  StyleSheet
+  StyleSheet,
+  TouchableOpacity // 1. Importação adicionada
 } from 'react-native';
+import * as Speech from 'expo-speech';
 
 export default function Drawer1() {
 
+  const falar = () => {
+    const texto = `
+      Sobre o aplicativo.
+
+      Para usar o aplicativo, clique nos botões que existem na tela.
+
+      É recomendado fazer login para ter a experiência completa.
+
+      Não beba e dirija.
+    `;
+
+    Speech.stop();
+
+    Speech.speak(texto, {
+      language: 'pt-BR',
+      pitch: 1,
+      rate: 0.9,
+    });
+  };
+
   return (
-
     <View style={styles.container}>
-
       <View style={styles.card}>
-
         <Text style={styles.titulo}>
-          Como usar
+          Sobre o aplicativo
         </Text>
 
         <Text style={styles.texto}>
-          Para usar o aplicativo, pressione os botões que existem na tela e seja feliz.
+          Para usar o aplicativo, clique nos botões que existem na tela.
         </Text>
 
-        <View style={styles.divisor} />
-
-        <Text style={styles.aviso}>
-          Não vendemos nada mostrado nesse aplicativo.
+        <Text style={styles.texto}>
+          É recomendado fazer login para ter a experiência completa.
         </Text>
 
-        <Text style={styles.subtexto}>
-          Os produtos e informações exibidos são apenas para consulta.
+        <Text style={styles.texto}>
+          Não beba e dirija.
         </Text>
 
+        <TouchableOpacity
+          style={styles.botao}
+          onPress={falar}
+        >
+          <Text style={styles.textoBotao}>
+            🔊 Ouvir
+          </Text>
+        </TouchableOpacity>
       </View>
-
     </View>
-
   );
 }
 
 const styles = StyleSheet.create({
-
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -55,7 +76,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
     padding: 25,
-
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -63,7 +83,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.12,
     shadowRadius: 10,
-
     elevation: 6
   },
 
@@ -79,28 +98,23 @@ const styles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 28,
     color: '#555555',
-    textAlign: 'center'
-  },
-
-  divisor: {
-    height: 1,
-    backgroundColor: '#E5E7EB',
-    marginVertical: 22
-  },
-
-  aviso: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#333333',
     textAlign: 'center',
-    marginBottom: 8
+    marginBottom: 15 // 3. Espaçamento adicionado entre os parágrafos
   },
 
-  subtexto: {
-    fontSize: 14,
-    lineHeight: 21,
-    color: '#888888',
-    textAlign: 'center'
-  }
+  // 2. Estilos do botão adicionados
+  botao: {
+    backgroundColor: '#2563EB',
+    paddingVertical: 14,
+    paddingHorizontal: 24,
+    borderRadius: 12,
+    alignItems: 'center',
+    marginTop: 15
+  },
 
+  textoBotao: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontWeight: 'bold'
+  }
 });
