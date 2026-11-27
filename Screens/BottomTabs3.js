@@ -69,7 +69,6 @@ export default function BottomTabs3() {
     }
   };
 
-  // TELA DE LOGIN / CADASTRO (QUANDO NINGUÉM ESTÁ LOGADO)
   if (!usuario) {
     return (
       <KeyboardAvoidingView
@@ -131,7 +130,6 @@ export default function BottomTabs3() {
     );
   }
 
-  // TELA DE PERFIL (QUANDO UM USUÁRIO ESTÁ LOGADO)
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>

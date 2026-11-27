@@ -35,10 +35,6 @@ export async function getDatabase() {
   return dbPromise;
 }
 
-// ==========================================
-// OPERAÇÕES DA TABELA USUARIO
-// ==========================================
-
 export async function cadastrarUsuario(username, senha) {
   const db = await getDatabase();
   const usernameFormatado = username.trim().toLowerCase();
@@ -97,11 +93,6 @@ export async function logoutUsuario() {
   await db.runAsync('UPDATE usuario SET logado = 0');
 }
 
-// ==========================================
-// CRUD COMPLETO DA TABELA FAVORITOS
-// ==========================================
-
-// CREATE
 export async function adicionarFavorito(usuarioId, veiculo, observacao = '') {
   const db = await getDatabase();
   await db.runAsync(
@@ -120,7 +111,6 @@ export async function adicionarFavorito(usuarioId, veiculo, observacao = '') {
   );
 }
 
-// READ
 export async function listarFavoritosUsuario(usuarioId) {
   const db = await getDatabase();
   return await db.getAllAsync(
@@ -129,7 +119,6 @@ export async function listarFavoritosUsuario(usuarioId) {
   );
 }
 
-// UPDATE
 export async function atualizarObservacaoFavorito(favoritoId, novaObservacao) {
   const db = await getDatabase();
   await db.runAsync(
@@ -138,7 +127,6 @@ export async function atualizarObservacaoFavorito(favoritoId, novaObservacao) {
   );
 }
 
-// DELETE
 export async function removerFavorito(favoritoId) {
   const db = await getDatabase();
   await db.runAsync('DELETE FROM favoritos WHERE id = ?', [favoritoId]);

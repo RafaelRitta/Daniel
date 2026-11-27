@@ -3,7 +3,7 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity // 1. Importação adicionada
+  TouchableOpacity
 } from 'react-native';
 import * as Speech from 'expo-speech';
 
@@ -99,10 +99,9 @@ const styles = StyleSheet.create({
     lineHeight: 28,
     color: '#555555',
     textAlign: 'center',
-    marginBottom: 15 // 3. Espaçamento adicionado entre os parágrafos
+    marginBottom: 15
   },
 
-  // 2. Estilos do botão adicionados
   botao: {
     backgroundColor: '#2563EB',
     paddingVertical: 14,
